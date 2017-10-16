@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('student/{student_no/score/(subject?)}', function ($student_no,$subhect = null) {
-    return "學號：".$student_no."的".((is_null($subhect))?"所有科目":$subhect)."成績";
+Route::get('student/{student_no}/score/{subject?}', function ($student_no,$subject = null) {
+    return "學號：".$student_no."的".((is_null($subject))?"所有科目":$subject)."成績";
 });
+
