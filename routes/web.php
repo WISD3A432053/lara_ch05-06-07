@@ -40,10 +40,10 @@ route::group(['prefix'=>'student'],function() {
         return "學號：" . $student_no . "的" . ((is_null($subject)) ? "所有科目" : $subject) . "成績";
     })->where(['student_no' => 's[0-9]{10}', 'subject' => '(chinese|english|math)']);
 });
-*/
+
 route::pattern('student_no','s[0-9]{10}');
 route::group(['prefix'=>'student'],function() {
-    
+
     Route::get('{student_no}',[
         'as'=>'student',
         'use'=> function ($student_no) {
@@ -57,4 +57,19 @@ route::group(['prefix'=>'student'],function() {
             return '學號：' . $student_no . '的' . ((is_null($subject)) ? '所有科目' : $subject) . '成績';
         }
     ])->where(['subject' => '(chinese|english|math)']);
+});
+*/
+route::get('/','HomeController@indexc');
+
+route::group(['prefix'=>'student'],function() {
+
+    Route::get('{student_no}', [
+        'as' => 'student',
+        'uses' => 'StudentController@getStudentDate'
+    ]);
+
+    Route::get('student/{student_no}/score/{subject?}', [
+        'as'=>'student.score',
+        'uses'=>'StudentController@getStudentScore'
+        ])->where(['subject' => '(chinese|english|math)']);
 });
