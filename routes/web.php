@@ -77,10 +77,13 @@ route::group(['prefix'=>'student'],function() {
 });
 
 route::controller('board','BoardController');
-*/
+
 
 Route::get('cool', 'Cool\TestController@indexc');
 
 Route::group(['namespace'=>'Cool'],function () {
     Route::get('cool', 'Cool\TestController@indexc');
 });
+*/
+
+Route::get('/board', 'BoardController@getIndex');
