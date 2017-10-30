@@ -86,6 +86,10 @@ Route::group(['namespace'=>'Cool'],function () {
 });
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/board', 'BoardController@getIndex');
 Route::get('/score', 'StudentController@getStudentScore');
 
