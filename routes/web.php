@@ -88,4 +88,11 @@ Route::group(['namespace'=>'Cool'],function () {
 
 Route::get('/board', 'BoardController@getIndex');
 Route::get('/score', 'StudentController@getStudentScore');
-Route::get('/', 'HomeController@Indexc');
+
+Route::group(['prefix' => 'student'],function() {
+
+    Route::get('{student_no}', ['as' => 'student', 'uses' => 'StudentController@getStudentData']);
+
+    Route::get('{student_no}/score/{subject?}', ['as' => 'student.score',
+        'uses' => 'StudentController@getStudentScore'])->where(['subject' => '(chinese|english|math)']);
+});
