@@ -43,7 +43,7 @@
 				國文：60
 			</p>
 			@endif
-			@if(is_null($subject) || $subject=='English')
+			@if(is_null($subject) || $subject=='english')
 			<p>
 				英文：60
 			</p>
